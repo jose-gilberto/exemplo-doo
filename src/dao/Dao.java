@@ -31,6 +31,9 @@ public abstract class Dao<T extends Model> implements Serializable {
             
             if (list == null) {
                 list = new ArrayList<T>();
+            }
+            
+            if (list.size() == 0) {
                 object.setId(1);
             } else {
                 object.setId(list.get(list.size() - 1).getId() + 1);
