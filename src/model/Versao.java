@@ -7,16 +7,18 @@ public class Versao extends Model {
     private Direcao direcao;
     private int numPortas;
     private int numAssentos;
+    private Modelo modelo;
 
     public Versao() {
     }
 
-    public Versao(String nome, Carroceria carroceria, Direcao direcao, int numPortas, int numAssentos) {
+    public Versao(String nome, Carroceria carroceria, Direcao direcao, int numPortas, int numAssentos, Modelo modelo) {
         this.nome = nome;
         this.carroceria = carroceria;
         this.direcao = direcao;
         this.numPortas = numPortas;
         this.numAssentos = numAssentos;
+        this.modelo = modelo;
     }
     
     public String getNome() {
@@ -57,6 +59,14 @@ public class Versao extends Model {
 
     public void setNumAssentos(int numAssentos) {
         this.numAssentos = numAssentos;
+    }
+
+    public Modelo getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(Modelo modelo) {
+        this.modelo = modelo;
     }
     
 }

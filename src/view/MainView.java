@@ -47,6 +47,7 @@ public class MainView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle de Acesso IFSC Lages");
+        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jMenu1.setText("Arquivo");
 
