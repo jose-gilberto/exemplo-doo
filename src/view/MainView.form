@@ -4,7 +4,7 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="jMenuArquivo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Arquivo"/>
           </Properties>
@@ -19,7 +19,7 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
+        <Menu class="javax.swing.JMenu" name="jMenuMarca">
           <Properties>
             <Property name="text" type="java.lang.String" value="Marca"/>
           </Properties>
@@ -34,7 +34,7 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu3">
+        <Menu class="javax.swing.JMenu" name="jMenuModelo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Modelo"/>
           </Properties>
@@ -49,7 +49,7 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu4">
+        <Menu class="javax.swing.JMenu" name="jMenuVersao">
           <Properties>
             <Property name="text" type="java.lang.String" value="Vers&#xe3;o"/>
           </Properties>
@@ -63,6 +63,31 @@
               </Events>
             </MenuItem>
           </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenuPessoas">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pessoas"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Gerenciamento de Pessoas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem4ActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenuVeiculos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ve&#xed;culos"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenuEstacionamento">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Estacionamento"/>
+          </Properties>
         </Menu>
       </SubComponents>
     </Menu>

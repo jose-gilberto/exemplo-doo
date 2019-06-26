@@ -13,6 +13,9 @@ public class Veiculo extends Model {
     private Versao versao;
     private Pessoa proprietario;
 
+    public static void main(String[] args) {
+    }
+    
     public Veiculo() {
     }
 

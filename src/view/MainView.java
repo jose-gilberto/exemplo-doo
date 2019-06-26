@@ -7,6 +7,7 @@ package view;
 
 import controller.MarcaController;
 import controller.ModeloController;
+import controller.PessoaController;
 import controller.VersaoController;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -36,20 +37,24 @@ public class MainView extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jMenuArquivo = new javax.swing.JMenu();
         jMenuItemSair = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jMenuMarca = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        jMenuModelo = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        jMenuVersao = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuPessoas = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuVeiculos = new javax.swing.JMenu();
+        jMenuEstacionamento = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle de Acesso IFSC Lages");
         setPreferredSize(new java.awt.Dimension(800, 600));
 
-        jMenu1.setText("Arquivo");
+        jMenuArquivo.setText("Arquivo");
 
         jMenuItemSair.setText("Sair");
         jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
@@ -57,11 +62,11 @@ public class MainView extends javax.swing.JFrame {
                 jMenuItemSairActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemSair);
+        jMenuArquivo.add(jMenuItemSair);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenuArquivo);
 
-        jMenu2.setText("Marca");
+        jMenuMarca.setText("Marca");
 
         jMenuItem1.setText("Gerenciamento de Marcas");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -69,11 +74,11 @@ public class MainView extends javax.swing.JFrame {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jMenuMarca.add(jMenuItem1);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenuMarca);
 
-        jMenu3.setText("Modelo");
+        jMenuModelo.setText("Modelo");
 
         jMenuItem2.setText("Gerenciamento de Modelos");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -81,11 +86,11 @@ public class MainView extends javax.swing.JFrame {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem2);
+        jMenuModelo.add(jMenuItem2);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jMenuModelo);
 
-        jMenu4.setText("Versão");
+        jMenuVersao.setText("Versão");
 
         jMenuItem3.setText("Gerenciamento Versões");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -93,9 +98,27 @@ public class MainView extends javax.swing.JFrame {
                 jMenuItem3ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem3);
+        jMenuVersao.add(jMenuItem3);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(jMenuVersao);
+
+        jMenuPessoas.setText("Pessoas");
+
+        jMenuItem4.setText("Gerenciamento de Pessoas");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenuPessoas.add(jMenuItem4);
+
+        jMenuBar1.add(jMenuPessoas);
+
+        jMenuVeiculos.setText("Veículos");
+        jMenuBar1.add(jMenuVeiculos);
+
+        jMenuEstacionamento.setText("Estacionamento");
+        jMenuBar1.add(jMenuEstacionamento);
 
         setJMenuBar(jMenuBar1);
 
@@ -147,6 +170,16 @@ public class MainView extends javax.swing.JFrame {
         versaoView.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        PessoaView pessoaView = new PessoaView(null, true);
+        try {
+            PessoaController pessoaController = new PessoaController(pessoaView);
+        } catch (IOException ex) {
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        pessoaView.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -183,14 +216,18 @@ public class MainView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenuArquivo;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuEstacionamento;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItemSair;
+    private javax.swing.JMenu jMenuMarca;
+    private javax.swing.JMenu jMenuModelo;
+    private javax.swing.JMenu jMenuPessoas;
+    private javax.swing.JMenu jMenuVeiculos;
+    private javax.swing.JMenu jMenuVersao;
     // End of variables declaration//GEN-END:variables
 }

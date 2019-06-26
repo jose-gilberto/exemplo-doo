@@ -1,52 +1,23 @@
 package model;
 
-public class Pessoa extends Model {
+public interface Pessoa {
     
-    private String nome;
-    private String email;
-    private Endereco endereco;
-    private Telefone telefone;
+    public String getNome();
 
-    public Pessoa() {
-    }
+    public void setNome(String nome);
 
-    public Pessoa(String nome, String email, Endereco endereco, Telefone telefone) {
-        this.nome = nome;
-        this.email = email;
-        this.endereco = endereco;
-        this.telefone = telefone;
-    }
+    public String getEmail();
 
-    public String getNome() {
-        return nome;
-    }
+    public void setEmail(String email);
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public Endereco getEndereco();
 
-    public String getEmail() {
-        return email;
-    }
+    public void setEndereco(Endereco endereco);
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public String getTelefone();
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
-    public Telefone getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(Telefone telefone) {
-        this.telefone = telefone;
-    }
+    public void setTelefone(String telefone);
+    
+    public String getDocumento();
     
 }
