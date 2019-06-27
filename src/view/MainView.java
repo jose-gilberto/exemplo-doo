@@ -8,6 +8,7 @@ package view;
 import controller.MarcaController;
 import controller.ModeloController;
 import controller.PessoaController;
+import controller.VeiculoController;
 import controller.VersaoController;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -48,6 +49,7 @@ public class MainView extends javax.swing.JFrame {
         jMenuPessoas = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuVeiculos = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuEstacionamento = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -115,6 +117,15 @@ public class MainView extends javax.swing.JFrame {
         jMenuBar1.add(jMenuPessoas);
 
         jMenuVeiculos.setText("Veículos");
+
+        jMenuItem5.setText("Gerenciamento de Veículos");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenuVeiculos.add(jMenuItem5);
+
         jMenuBar1.add(jMenuVeiculos);
 
         jMenuEstacionamento.setText("Estacionamento");
@@ -180,6 +191,16 @@ public class MainView extends javax.swing.JFrame {
         pessoaView.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        VeiculoView veiculoView = new VeiculoView(null, true);
+        try {
+            VeiculoController veiculoController = new VeiculoController(veiculoView);
+        } catch (IOException ex) {
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        veiculoView.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -223,6 +244,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItemSair;
     private javax.swing.JMenu jMenuMarca;
     private javax.swing.JMenu jMenuModelo;

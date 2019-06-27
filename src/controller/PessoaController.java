@@ -42,6 +42,9 @@ public class PessoaController {
         this.view.getjBtnExcluir().addActionListener(new ActionExcluir());
         this.view.getjBtnEditar().addActionListener(new ActionEditar());
         this.view.getjBtnAtualizar().addActionListener(new ActionAtualizar());
+        this.view.getjRadioPessoaFisicaBusca().addActionListener(new ActionFiltroPf());
+        this.view.getjRadioPessoaJuridicaBusca1().addActionListener(new ActionFiltroPj());
+        this.view.getjRadioTodosBusca().addActionListener(new ActionFiltroTodos());
         
     }
     
@@ -403,10 +406,25 @@ public class PessoaController {
             preencherTabela();
         }
     }
-    
-    private class ActionRadioFiltro implements ActionListener {
+   
+    private class ActionFiltroPf implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            preencherTabelaPf();
+        }
+    }
+    
+    private class ActionFiltroPj implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            preencherTabelaPj();
+        }
+    }
+    
+    private class ActionFiltroTodos implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            preencherTabela();
         }
     }
 }
