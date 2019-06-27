@@ -5,6 +5,7 @@
  */
 package view;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -36,7 +37,7 @@ public class PessoaView extends javax.swing.JDialog {
     private void initComponents() {
 
         buttonGroup2 = new javax.swing.ButtonGroup();
-        buttonGroup3 = new javax.swing.ButtonGroup();
+        btnGroupFiltro = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -77,8 +78,9 @@ public class PessoaView extends javax.swing.JDialog {
         jBtnLimpar = new javax.swing.JButton();
         jBtnCadastrar = new javax.swing.JButton();
         jBtnAtualizar = new javax.swing.JButton();
-        jRadioPessoaJuridicaBusca = new javax.swing.JRadioButton();
+        jRadioTodosBusca = new javax.swing.JRadioButton();
         jRadioPessoaFisicaBusca = new javax.swing.JRadioButton();
+        jRadioPessoaJuridicaBusca1 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -165,11 +167,14 @@ public class PessoaView extends javax.swing.JDialog {
         jBtnAtualizar.setText("Atualizar");
         jBtnAtualizar.setEnabled(false);
 
-        buttonGroup3.add(jRadioPessoaJuridicaBusca);
-        jRadioPessoaJuridicaBusca.setText("Pessoa Jurídica");
+        btnGroupFiltro.add(jRadioTodosBusca);
+        jRadioTodosBusca.setText("Todos");
 
-        buttonGroup3.add(jRadioPessoaFisicaBusca);
+        btnGroupFiltro.add(jRadioPessoaFisicaBusca);
         jRadioPessoaFisicaBusca.setText("Pessoa Física");
+
+        btnGroupFiltro.add(jRadioPessoaJuridicaBusca1);
+        jRadioPessoaJuridicaBusca1.setText("Pessoa Jurídica");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -186,7 +191,9 @@ public class PessoaView extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jRadioPessoaFisicaBusca)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioPessoaJuridicaBusca))
+                                .addComponent(jRadioPessoaJuridicaBusca1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jRadioTodosBusca))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel3)
@@ -333,7 +340,8 @@ public class PessoaView extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioPessoaFisicaBusca)
-                    .addComponent(jRadioPessoaJuridicaBusca))
+                    .addComponent(jRadioTodosBusca)
+                    .addComponent(jRadioPessoaJuridicaBusca1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -390,8 +398,8 @@ public class PessoaView extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btnGroupFiltro;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JButton jBtnAplicar;
     private javax.swing.JButton jBtnAtualizar;
     private javax.swing.JButton jBtnCadastrar;
@@ -429,7 +437,8 @@ public class PessoaView extends javax.swing.JDialog {
     private javax.swing.JRadioButton jRadioPessoaFisica;
     private javax.swing.JRadioButton jRadioPessoaFisicaBusca;
     private javax.swing.JRadioButton jRadioPessoaJuridica;
-    private javax.swing.JRadioButton jRadioPessoaJuridicaBusca;
+    private javax.swing.JRadioButton jRadioPessoaJuridicaBusca1;
+    private javax.swing.JRadioButton jRadioTodosBusca;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -620,4 +629,38 @@ public class PessoaView extends javax.swing.JDialog {
         this.jBtnLimpar = jBtnLimpar;
     }
 
+    public JRadioButton getjRadioPessoaFisicaBusca() {
+        return jRadioPessoaFisicaBusca;
+    }
+
+    public void setjRadioPessoaFisicaBusca(JRadioButton jRadioPessoaFisicaBusca) {
+        this.jRadioPessoaFisicaBusca = jRadioPessoaFisicaBusca;
+    }
+
+    public JRadioButton getjRadioPessoaJuridicaBusca1() {
+        return jRadioPessoaJuridicaBusca1;
+    }
+
+    public void setjRadioPessoaJuridicaBusca1(JRadioButton jRadioPessoaJuridicaBusca1) {
+        this.jRadioPessoaJuridicaBusca1 = jRadioPessoaJuridicaBusca1;
+    }
+
+    public JRadioButton getjRadioTodosBusca() {
+        return jRadioTodosBusca;
+    }
+
+    public void setjRadioTodosBusca(JRadioButton jRadioTodosBusca) {
+        this.jRadioTodosBusca = jRadioTodosBusca;
+    }
+
+    public ButtonGroup getBtnGroupFiltro() {
+        return btnGroupFiltro;
+    }
+
+    public void setBtnGroupFiltro(ButtonGroup btnGroupFiltro) {
+        this.btnGroupFiltro = btnGroupFiltro;
+    }
+    
+    
+    
 }

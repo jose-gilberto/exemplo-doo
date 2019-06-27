@@ -9,18 +9,16 @@ public class PessoaJuridica extends Model implements Pessoa, Serializable {
     private Endereco endereco;
     private String telefone;
     private String cnpj;
-    private String razaoSocial;
 
     public PessoaJuridica() {
     }
 
-    public PessoaJuridica(String nome, String email, Endereco endereco, String telefone, String cnpj, String razaoSocial) {
+    public PessoaJuridica(String nome, String email, Endereco endereco, String telefone, String cnpj) {
         this.nome = nome;
         this.email = email;
         this.endereco = endereco;
         this.telefone = telefone;
         this.cnpj = cnpj;
-        this.razaoSocial = razaoSocial;
     }
 
     @Override
@@ -69,14 +67,6 @@ public class PessoaJuridica extends Model implements Pessoa, Serializable {
 
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
-    }
-
-    public String getRazaoSocial() {
-        return razaoSocial;
-    }
-
-    public void setRazaoSocial(String razaoSocial) {
-        this.razaoSocial = razaoSocial;
     }
 
     @Override
