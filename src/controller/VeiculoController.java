@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -41,6 +43,9 @@ public class VeiculoController {
         this.view.getjBtnLimpar().addActionListener(new ActionLimparCampos());
         this.view.getjBtnAplicar().addActionListener(new ActionAplicarFiltro());
         this.view.getjBtnCadastrar().addActionListener(new ActionCadastrar());
+        this.view.getjBtnExcluir().addActionListener(new ActionExcluir());
+        this.view.getjBtnEditar().addActionListener(new ActionEditar());
+        this.view.getjBtnAtualizar().addActionListener(new ActionAtualizar());
     }
     
     public void sairView() {
@@ -134,6 +139,107 @@ public class VeiculoController {
         this.view.getjInputVersao().setSelectedIndex(0);
     }
     
+    public void excluir() {
+        int row = this.view.getjTable().getSelectedRow();
+        if (row < 0) {
+            JFrame frame = new JFrame("Aviso");
+            JOptionPane.showMessageDialog( frame,
+                "Você precisa selecionar um veículo para excluir.",
+                "Aviso!",
+                JOptionPane.WARNING_MESSAGE );
+        } else {
+            int id = (int) this.view.getjTable().getValueAt(row, 0);
+            this.serviceVeiculo.delete(id);
+            preencherTabela();
+        }
+    }
+    
+    public void editar() {
+        int row = this.view.getjTable().getSelectedRow();
+        if ( row < 0) {
+            JFrame frame = new JFrame("Aviso");
+            JOptionPane.showMessageDialog( frame,
+                "Você precisa selecionar um veículo para editar.",
+                "Aviso!",
+                JOptionPane.WARNING_MESSAGE );
+        } else {
+            this.view.getjBtnCadastrar().setEnabled(false);
+            this.view.getjBtnAtualizar().setEnabled(true);
+            
+            int id = (int) this.view.getjTable().getValueAt(row, 0);
+            Veiculo veiculoEditar = this.serviceVeiculo.retrieve(id);
+            
+            this.view.getjInputId().setText("" + veiculoEditar.getId());
+            this.view.getjInputCapacidade().setText("" + veiculoEditar.getCapacidadeCombustivel());
+            this.view.getjInputCapacidadePeso().setText("" + veiculoEditar.getCapacidadePeso());
+            this.view.getjInputAltura().setText("" + veiculoEditar.getAltura());
+            this.view.getjInputPeso().setText("" + veiculoEditar.getPeso());
+            this.view.getjInputPlaca().setText(veiculoEditar.getPlaca());
+            this.view.getjInputTamanho().setText("" + veiculoEditar.getTamanho());
+            this.view.getjInputTipoCombustivel().setText(veiculoEditar.getTipoCombustivel());
+            
+            System.out.println(veiculoEditar.getProprietario().getClass());
+            
+            for (int i = 0; i < this.view.getjInputProprietario().getItemCount(); i++) {
+                String[] aux = this.view.getjInputProprietario().getItemAt(i).split("-");
+                aux[0] = aux[0].replace(" ", "");
+                aux[2] = aux[2].replace(" ", "");    
+                if (Integer.parseInt(aux[0]+"") == veiculoEditar.getProprietario().getId()) {
+                    if (veiculoEditar.getProprietario() instanceof model.PessoaFisica && aux[2].equals("PF")) {
+                        this.view.getjInputProprietario().setSelectedIndex(i);
+                        break;
+                    } else if (veiculoEditar.getProprietario() instanceof model.PessoaJuridica && aux[2].equals("PJ")) {
+                        this.view.getjInputProprietario().setSelectedIndex(i);
+                        break;
+                    }
+                }
+            }
+            
+            for (int i = 0; i < this.view.getjInputVersao().getItemCount(); i++) {
+                String[] aux = this.view.getjInputVersao().getItemAt(i).split("-");
+                aux[0] = aux[0].replace(" ", "");
+                
+                if (Integer.parseInt(aux[0]) == veiculoEditar.getVersao().getId()) {
+                    this.view.getjInputVersao().setSelectedIndex(i);
+                    break;
+                }
+            }
+        }
+    }
+    
+    public void atualizar() {
+        Versao versao = this.versaoService.retrieve(
+                Integer.parseInt(this.view.getjInputVersao().getSelectedItem().toString().charAt(0) + "")
+        );
+        
+        String[] aux = this.view.getjInputProprietario().getSelectedItem().toString().split("-");
+        Pessoa pessoa = ((aux[2].equals(" PF")) ? this.pessoaFisicaService.retrieve(
+                Integer.parseInt(this.view.getjInputProprietario().getSelectedItem().toString().charAt(0) + "")) : 
+            this.pessoaJuridicaService.retrieve(
+                Integer.parseInt(this.view.getjInputProprietario().getSelectedItem().toString().charAt(0) + "")));
+        
+        Veiculo veiculoAtualizado = new Veiculo(
+            this.view.getjInputPlaca().getText(),
+                Float.parseFloat(this.view.getjInputCapacidade().getText()),
+            this.view.getjInputTipoCombustivel().getText(),
+            Float.parseFloat(this.view.getjInputPeso().getText()),
+            Float.parseFloat(this.view.getjInputTamanho().getText()),
+            Float.parseFloat(this.view.getjInputAltura().getText()),
+            this.view.getjSemiReboque().isSelected(),
+            Float.parseFloat(this.view.getjInputCapacidadePeso().getText()),
+            versao,
+            pessoa
+        );
+        
+        
+        veiculoAtualizado.setId(Integer.parseInt(this.view.getjInputId().getText()));
+        
+        this.serviceVeiculo.update(veiculoAtualizado.getId(), veiculoAtualizado);
+        
+        this.view.getjBtnCadastrar().setEnabled(true);
+        this.view.getjBtnAtualizar().setEnabled(false);
+    }
+    
     private class ActionSair implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -164,5 +270,27 @@ public class VeiculoController {
         }
     }
     
+    private class ActionExcluir implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            excluir();
+        }
+    }
+    
+    private class ActionEditar implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            editar();
+        }
+    }
+    
+    private class ActionAtualizar implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            atualizar();
+            limparCampos();
+            preencherTabela();
+        }
+    }
     
 }

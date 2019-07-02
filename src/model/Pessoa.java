@@ -20,4 +20,6 @@ public interface Pessoa {
     
     public String getDocumento();
     
+    public int getId();
+    
 }
