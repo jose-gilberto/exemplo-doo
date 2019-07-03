@@ -5,8 +5,10 @@
  */
 package view;
 
+import controller.EstacionamentoController;
 import controller.MarcaController;
 import controller.ModeloController;
+import controller.MovimentacaoController;
 import controller.PessoaController;
 import controller.VeiculoController;
 import controller.VersaoController;
@@ -51,6 +53,9 @@ public class MainView extends javax.swing.JFrame {
         jMenuVeiculos = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuEstacionamento = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle de Acesso IFSC Lages");
@@ -129,7 +134,28 @@ public class MainView extends javax.swing.JFrame {
         jMenuBar1.add(jMenuVeiculos);
 
         jMenuEstacionamento.setText("Estacionamento");
+
+        jMenuItem6.setText("Gerenciamento do Estacionamento");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenuEstacionamento.add(jMenuItem6);
+
         jMenuBar1.add(jMenuEstacionamento);
+
+        jMenu1.setText("Movimentações");
+
+        jMenuItem7.setText("Histórico");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem7);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -137,7 +163,7 @@ public class MainView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 610, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,6 +227,26 @@ public class MainView extends javax.swing.JFrame {
         veiculoView.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        EstacionamentoView estacionamentoView = new EstacionamentoView(null, true);
+        try {
+            EstacionamentoController estacionamentoController = new EstacionamentoController(estacionamentoView);
+        } catch (IOException ex) {
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        estacionamentoView.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        MovimentacaoView movimentacaoView = new MovimentacaoView(null, true);
+        try {
+            MovimentacaoController movimentacaoController = new MovimentacaoController(movimentacaoView);
+        } catch (IOException ex) {
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        movimentacaoView.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -237,6 +283,7 @@ public class MainView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenuArquivo;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuEstacionamento;
@@ -245,6 +292,8 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItemSair;
     private javax.swing.JMenu jMenuMarca;
     private javax.swing.JMenu jMenuModelo;
